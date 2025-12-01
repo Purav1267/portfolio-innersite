@@ -64,15 +64,17 @@ const Contact: React.FC<ContactProps> = (props) => {
             const publicKey = 'IsMKn2hQsu6l1Dz7f'; // EmailJS public key
             
             // Send email using EmailJS (v4 API - public key passed directly)
+            // Note: With Gmail service, emails are sent FROM your Gmail account
+            // The sender's information is included in the email body via template variables
             const result = await emailjs.send(
                 serviceId,
                 templateId,
                 {
-                    from_name: name,
-                    from_email: email,
-                    to_email: 'puravmalik24@gmail.com', // Recipient email
-                    company: company || 'Not provided',
-                    message: message,
+                    from_name: name, // Sender's name
+                    from_email: email, // Sender's email address
+                    company: company || 'Not provided', // Sender's company
+                    message: message, // Sender's message
+                    reply_to: email, // Reply-to address (so you can reply directly to the sender)
                 },
                 publicKey
             );
