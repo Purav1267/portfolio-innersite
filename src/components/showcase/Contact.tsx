@@ -59,9 +59,10 @@ const Contact: React.FC<ContactProps> = (props) => {
             setIsLoading(true);
             
             // EmailJS configuration
-            const serviceId = 'service_1vztslh'; // Your Gmail service ID
-            const templateId = 'template_ulmrok8'; // Email template ID
-            const publicKey = 'IsMKn2hQsu6l1Dz7f'; // EmailJS public key
+            const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID || 'service_1vztslh';
+            const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || 'template_ulmrok8';
+            const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || 'IsMKn2hQsu6l1Dz7f'; 
+            // EmailJS public key
             
             // Send email using EmailJS (v4 API - public key passed directly)
             // Note: With Gmail service, emails are sent FROM your Gmail account
