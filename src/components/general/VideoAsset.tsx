@@ -1,32 +1,48 @@
-import React, { useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 
 export interface VideoAssetProps {
     src: string;
 }
 
 const VideoAsset: React.FC<VideoAssetProps> = ({ src }) => {
-    const id = `video-${src}`;
-    const [, setHasLoaded] = useState(false);
+    const videoRef = useRef<HTMLVideoElement>(null);
 
     useEffect(() => {
-        const vid = document.getElementById(id);
-        if (vid) {
-            vid.oncanplay = function () {
-                setHasLoaded(true);
+        const video = videoRef.current;
+        if (video) {
+            const handleError = (e: Event) => {
+                console.error('Video error:', e);
+            };
+            
+            const handleLoadStart = () => {
+                // Video started loading
+            };
+            
+            video.addEventListener('error', handleError);
+            video.addEventListener('loadstart', handleLoadStart);
+            
+            // Try to load the video
+            video.load();
+            
+            return () => {
+                video.removeEventListener('error', handleError);
+                video.removeEventListener('loadstart', handleLoadStart);
             };
         }
-    }, [id]);
+    }, [src]);
 
     return (
-        <div>
+        <div style={styles.container}>
             <video
-                id={`video-${src}`}
-                style={Object.assign({}, styles.video)}
+                ref={videoRef}
+                style={styles.video}
                 src={src}
                 autoPlay
                 muted
                 loop
+                playsInline
                 disablePictureInPicture
+                controls={false}
             />
         </div>
     );
@@ -35,15 +51,14 @@ const VideoAsset: React.FC<VideoAssetProps> = ({ src }) => {
 const styles: StyleSheetCSS = {
     container: {
         width: '100%',
-    },
-    loading: {
-        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     video: {
         width: '100%',
-    },
-    loadingBox: {
-        backgroundColor: 'red',
+        maxWidth: '100%',
+        height: 'auto',
     },
 };
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import emailjs from '@emailjs/browser';
 import colors from '../../constants/colors';
 import twitterIcon from '../../assets/pictures/contact-twitter.png';
 import ghIcon from '../../assets/pictures/contact-gh.png';
@@ -56,29 +57,27 @@ const Contact: React.FC<ContactProps> = (props) => {
         }
         try {
             setIsLoading(true);
-            const res = await fetch(
-                'https://api.puravmalik.com/api/contact',
+            
+            // EmailJS configuration
+            const serviceId = 'service_1vztslh'; // Your Gmail service ID
+            const templateId = 'template_ulmrok8'; // Email template ID
+            const publicKey = 'IsMKn2hQsu6l1Dz7f'; // EmailJS public key
+            
+            // Send email using EmailJS (v4 API - public key passed directly)
+            const result = await emailjs.send(
+                serviceId,
+                templateId,
                 {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        company,
-                        email,
-                        name,
-                        message,
-                    }),
-                }
+                    from_name: name,
+                    from_email: email,
+                    to_email: 'puravmalik24@gmail.com', // Recipient email
+                    company: company || 'Not provided',
+                    message: message,
+                },
+                publicKey
             );
-            // the response will be either {success: true} or {success: false, error: message}
-            const data = (await res.json()) as
-                | {
-                      success: false;
-                      error: string;
-                  }
-                | { success: true };
-            if (data.success) {
+            
+            if (result.status === 200 || result.text === 'OK') {
                 setFormMessage(`Message successfully sent. Thank you ${name}!`);
                 setCompany('');
                 setEmail('');
@@ -87,13 +86,15 @@ const Contact: React.FC<ContactProps> = (props) => {
                 setFormMessageColor(colors.blue);
                 setIsLoading(false);
             } else {
-                setFormMessage(data.error);
+                setFormMessage('Failed to send message. Please try again.');
                 setFormMessageColor(colors.red);
                 setIsLoading(false);
             }
-        } catch (e) {
+        } catch (e: any) {
+            console.error('EmailJS error:', e);
+            const errorMessage = e?.text || e?.message || 'Unknown error occurred';
             setFormMessage(
-                'There was an error sending your message. Please try again.'
+                `Error: ${errorMessage}. Please check your EmailJS configuration.`
             );
             setFormMessageColor(colors.red);
             setIsLoading(false);
