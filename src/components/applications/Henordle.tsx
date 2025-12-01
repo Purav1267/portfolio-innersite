@@ -9,8 +9,8 @@ const PuravordleApp: React.FC<PuravordleAppProps> = (props) => {
         <Window
             top={20}
             left={300}
-            width={600}
-            height={860}
+            width={700}
+            height={900}
             windowBarIcon="windowGameIcon"
             windowTitle="Puravordle"
             closeWindow={props.onClose}

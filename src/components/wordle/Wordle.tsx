@@ -273,8 +273,8 @@ const Wordle: React.FC<WordleProps> = () => {
     return (
         <div style={styles.container}>
             <div style={styles.header}>
-                <h2>Puravordle</h2>
-                <p>Wordle but with a PURAV based twist.</p>
+                <h2 style={{ fontSize: 32, marginBottom: 4 }}>Puravordle</h2>
+                <p style={{ fontSize: 14, margin: 0 }}>Wordle but with a PURAV based twist.</p>
             </div>
             <motion.div
                 variants={gameOverAnimations}
@@ -382,11 +382,14 @@ const styles: StyleSheetCSS = {
     container: {
         flex: 1,
         flexDirection: 'column',
-        overflowY: 'scroll',
+        overflowY: 'auto',
+        minHeight: 0,
     },
     gameContainer: {
         flex: 1,
         flexDirection: 'column',
+        minHeight: 0,
+        overflow: 'visible',
     },
     gameOverContainer: {
         zIndex: -1000,
@@ -400,49 +403,60 @@ const styles: StyleSheetCSS = {
         backgroundColor: '#fff',
     },
     header: {
-        flexShrink: 1,
-        paddingTop: 32,
+        flexShrink: 0,
+        paddingTop: 16,
+        paddingBottom: 8,
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
     },
     keyboardContainer: {
-        flexShrink: 1,
-
-        paddingBottom: 24,
+        flexShrink: 0,
+        paddingTop: 16,
+        paddingBottom: 16,
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
     },
     playArea: {
-        flex: 1,
+        flexShrink: 1,
         flexDirection: 'column',
-
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 16,
-        marginBottom: 16,
+        marginTop: 8,
+        marginBottom: 8,
+        minHeight: 0,
     },
     letterBox: {
-        padding: 12,
-        paddingTop: 16,
-        minWidth: 42,
-
+        padding: 8,
+        paddingTop: 10,
+        paddingBottom: 10,
+        minWidth: 36,
+        maxWidth: 42,
         justifyContent: 'center',
         alignItems: 'center',
-        paddingBottom: 16,
-        margin: 4,
+        margin: 2,
     },
-    keyboardRow: {},
+    keyboardRow: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+    },
     guessLetterBox: {
-        width: 60,
-        height: 60,
+        width: 50,
+        height: 50,
+        minWidth: 50,
+        minHeight: 50,
         justifyContent: 'center',
         alignItems: 'center',
-
-        margin: 4,
+        margin: 3,
     },
-    guessWordRow: {},
+    guessWordRow: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     emptyBox: {
         border: '2px solid gray',
         backgroundColor: 'white',

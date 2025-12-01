@@ -51,7 +51,7 @@ const About: React.FC<AboutProps> = (props) => {
                     technologies like React.js, Node.js, and MongoDB. I've worked
                     on various projects ranging from web applications to AI
                     assistants and route optimization systems.                     In the summer of
-                    2025, I completed an internship at Coding Bits as a Web
+                    2024, I completed an internship at Coding Bits as a Web
                     Developer, where I gained hands-on experience in frontend and
                     backend development, API integration, and database
                     management.
@@ -117,9 +117,9 @@ const About: React.FC<AboutProps> = (props) => {
                     <a
                         rel="noreferrer"
                         target="_blank"
-                        href="https://twitter.com/puravmalik"
+                        href="https://x.com/purav_malik"
                     >
-                        @puravmalik
+                        @purav_malik
                     </a>{' '}
                     Good luck and have fun!
                 </p>
