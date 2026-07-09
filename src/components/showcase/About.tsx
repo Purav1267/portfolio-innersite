@@ -15,7 +15,7 @@ const About: React.FC<AboutProps> = (props) => {
             <br />
             <div className="text-block">
                 <p>
-                    I'm a Computer Science student at BML Munjal University (BTech, CGPA 8.04)
+                    I'm a Computer Science student at BML Munjal University (BTech, CGPA 8.1)
                     who enjoys turning ideas into working products. Most of my work sits at the
                     intersection of full‑stack development and AI, where I like building tools
                     that feel practical, fast, and a little bit fun to use.

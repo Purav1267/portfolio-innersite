@@ -10,6 +10,59 @@ const Experience: React.FC<ExperienceProps> = (props) => {
             <div style={styles.headerContainer}>
                 <div style={styles.header}>
                     <div style={styles.headerRow}>
+                        <h1>Dentsu Sokrati</h1>
+                        <a
+                            rel="noreferrer"
+                            target="_blank"
+                            href={'https://www.dentsu.com/in/en'}
+                        >
+                            <h4>www.dentsu.com</h4>
+                        </a>
+                    </div>
+                    <div style={styles.headerRow}>
+                        <h3>Associate Business Analyst</h3>
+                        <b>
+                            <p>Jan 2026 – July 2026 | Pune</p>
+                        </b>
+                    </div>
+                </div>
+            </div>
+            <div className="text-block">
+                <ul>
+                    <li>
+                        <p>
+                            Tracked and analyzed campaign KPIs (CAC, IPA, conversion
+                            rate, engagement rate) across BAGIC and Tata Neu affiliate
+                            campaigns, surfacing optimization opportunities for vendor
+                            and client teams.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Managed affiliate marketing campaigns across email, SMS,
+                            WhatsApp, and RCS traffic inventories using CPS, CPL, and
+                            CPE costing models.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Built and maintained WoW/MoM performance reports and SCRUM
+                            dashboards for multiple client accounts, improving reporting
+                            accuracy and decision speed.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Coordinated vendor performance reviews, collected monthly
+                            projections, and evaluated inventory quality to maximize
+                            campaign ROI.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <div style={styles.headerContainer}>
+                <div style={styles.header}>
+                    <div style={styles.headerRow}>
                         <h1>Coding Bits</h1>
                         <a
                             rel="noreferrer"
