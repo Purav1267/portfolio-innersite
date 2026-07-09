@@ -16,7 +16,7 @@ const PuravordleApp: React.FC<PuravordleAppProps> = (props) => {
             closeWindow={props.onClose}
             onInteract={props.onInteract}
             minimizeWindow={props.onMinimize}
-            bottomLeftText={'© Copyright 2025 Purav Malik'}
+            bottomLeftText={'© Copyright 2026 Purav Malik'}
         >
             <div className="site-page">
                 <Wordle />
